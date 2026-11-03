@@ -1,0 +1,60 @@
+\begin{tikzpicture}[
+    >={Stealth[length=2.0mm]},
+    every node/.style={font=\small},
+    rep/.style={ellipse, draw, minimum width=18mm, minimum height=5mm, inner sep=1pt},
+    token/.style={minimum width=5mm, minimum height=5mm, inner sep=1pt, font=\scriptsize},
+    masked/.style={token, draw, rounded corners=1pt, fill=gray!15},
+    pred/.style={circle, draw, minimum size=9mm, inner sep=0pt, fill=white, font=\footnotesize},
+    loss/.style={draw, rectangle, rounded corners=1pt, minimum width=9mm, minimum height=9mm, inner sep=1pt, fill=gray!7, font=\footnotesize},
+    avg/.style={circle, draw, minimum size=9mm, inner sep=0pt, font=\scriptsize, align=center, fill=white},
+    arr/.style={->, thick},
+    targ/.style={<-, thick}
+]
+    \path[use as bounding box] (-0.55,-1.00) rectangle (5.90,4.6);
+    \node[font=\bfseries] at (2.75,4.30) {data2vec};
+    \node[align=center, font=\footnotesize] at (0.65,4.25) {student\\representations};
+    \node[align=center, font=\footnotesize] at (4.85,4.25) {teacher\\representations};
+
+    \foreach \x/\sym/\idx in {-0.45/a/1,0.10/b/2,0.65/?/3,1.20/d/4,1.75/?/5} {
+        \ifnum\idx=3
+            \node[masked] (s\idx) at (\x,-0.32) {?};
+        \else
+            \ifnum\idx=5
+                \node[masked] (s\idx) at (\x,-0.32) {?};
+            \else
+                \node[token] (s\idx) at (\x,-0.32) {$\sym$};
+            \fi
+        \fi
+        \node[below=2pt of s\idx] {$x_\idx$};
+    }
+    \foreach \x/\sym/\idx in {3.75/a/1,4.30/b/2,4.85/c/3,5.40/d/4,5.95/e/5} {
+        \node[token] (t\idx) at (\x,-0.32) {$\sym$};
+        \node[below=2pt of t\idx] {$x_\idx$};
+    }
+
+    \foreach \y/\name/\lab in {3.25/l1/N,2.35/l2/{N-1},1.45/l3/{N-2},0.55/l4/1} {
+        \node[rep] (\name s) at (0.65,\y) {$\lab$};
+        \node[rep] (\name t) at (4.85,\y) {$\lab$};
+    }
+    \draw[arr] (l4s.north) -- (l3s.south);
+    \draw[arr] (l3s.north) -- (l2s.south);
+    \draw[arr] (l2s.north) -- (l1s.south);
+    \draw[arr] (l4t.north) -- (l3t.south);
+    \draw[arr] (l3t.north) -- (l2t.south);
+    \draw[arr] (l2t.north) -- (l1t.south);
+    \node[font=\small\bfseries] at (1.00,1.08) {$\vdots$};
+    \node[font=\small\bfseries] at (5.20,1.08) {$\vdots$};
+
+    \node[pred] (pred) at (2.55,3.15) {Pred};
+    \node[loss] (mse) at (2.55,1.9) {$\ell_\mathrm{d2v}$};
+    \node[avg] (avg) at (2.55,0.75) {avg.\\last $K$};
+
+    \draw[arr] (l1s.east) -- (pred.west);
+    \draw[arr] (pred.south) -- (mse.north);
+    \draw[arr] (avg.north) -- (mse.south);
+    \draw[arr] (l1t.west) .. controls (3.95,3.00) and (3.20,2.00) .. (avg.east);
+    \draw[arr] (l2t.west) .. controls (3.90,2.30) and (3.20,1.70) .. (avg.east);
+    \draw[arr] (l3t.west) .. controls (3.90,1.45) and (3.20,1.35) .. (avg.east);
+    \draw[arr] (s3.north) -- (l4s.south);
+    \draw[arr] (t3.north) -- (l4t.south);
+\end{tikzpicture}

@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+*.executed.ipynb
+.ipynb_checkpoints/
+.venv/
+figures/
+data/*
+!data/reproduction_data/
+!data/reproduction_data/**
+*.log
+.DS_Store
+PROVENANCE.md

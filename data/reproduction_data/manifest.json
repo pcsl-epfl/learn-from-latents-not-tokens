@@ -1,0 +1,35 @@
+{
+  "inputs": [
+    {
+      "file": "data2vec.pkl",
+      "bytes": 3291,
+      "sha256": "6064a52d66b0d92d2bf9eaf2fa4b882fa6f3fb1612fe5507dfc99d7258b18d73",
+      "source": "notebooks/summary_data/data2vec.pkl",
+      "source_sha256": "6064a52d66b0d92d2bf9eaf2fa4b882fa6f3fb1612fe5507dfc99d7258b18d73"
+    },
+    {
+      "file": "data2vec_sensitivity.pkl",
+      "bytes": 15374,
+      "sha256": "ec914e93cc2025ba9609a4d655593c34e1d60282d49a38fa9f9396d593dc1141",
+      "source": "notebooks/summary_data/data2vec_sensitivity.pkl",
+      "source_sha256": "ec914e93cc2025ba9609a4d655593c34e1d60282d49a38fa9f9396d593dc1141"
+    },
+    {
+      "file": "df_e2e_statistician.parquet",
+      "bytes": 15606,
+      "sha256": "84c6d543998d0e1bd6d0603a50d92f244a4c7336c1e14906c575c0ceaefcbbad",
+      "source": "notebooks/summary_data/df_e2e_statistician.parquet",
+      "source_sha256": "84c6d543998d0e1bd6d0603a50d92f244a4c7336c1e14906c575c0ceaefcbbad"
+    },
+    {
+      "file": "df_ptc_m_sweep_best.parquet",
+      "bytes": 11950,
+      "sha256": "79a2afdc2354fb95fef22d09ea851b12932c5bac935b36643fad166c329eaa4c",
+      "source": "notebooks/summary_data/df_ptc_m_sweep_best.parquet",
+      "source_sha256": "e1d0d9bf0bc08ea5a0c1d7e768285d1f09e4e1c42223db095d5884163e197212"
+    }
+  ],
+  "upstream_training_revision": "70083496bc59c6d9886e884185b56f36464136dd",
+  "historical_simulator_sha256": "edb8c400ac2e82501f3d151ddc06fc6cbeee5904adca298ba717d33fb98a3203",
+  "historical_sampling_source_sha256": "400cc73d305289c3b34e8ec48b5199fe7e478c0a448af09f407deb423cd9c62e"
+}
